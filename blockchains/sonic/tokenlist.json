@@ -1,7 +1,5 @@
 {
-  "name": "Shadow: Sonic Tokens List",
-  "logoURI": "",
-  "timestamp": "2024-12-21T14:33:26.183301",
+"name": "Kingdom Sonic Token List",
   "tokens": [
     [
       {
@@ -45,12 +43,13 @@
         "address": "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
         "symbol": "scUSD",
         "decimals": 6
+      },
+      {
+        "address": "0xB2a909b8bCce9B30BbC9d4c748fD897d6AD9c285",
+        "name": "Ruggie's Pizza",
+        "symbol": "RUGGIE",
+        "decimals": 18
       }
     ]
   ],
-  "version": {
-    "major": 1,
-    "minor": 0,
-    "patch": 0
-  }
 }
