@@ -1,7 +1,49 @@
 {
-  "name": "Kingdom Sonic Token List",
+"name": "Kingdom Sonic Token List",
   "tokens": [
     [
+      {
+        "name": "Wrapped Sonic",
+        "address": "0x039e2fB66102314Ce7b64Ce5Ce3E5183bc94aD38",
+        "symbol": "wS",
+        "decimals": 18
+      },
+      {
+        "name": "Bridged USDC",
+        "address": "0x29219dd400f2Bf60E5a23d13Be72B486D4038894",
+        "symbol": "USDC.e",
+        "decimals": 6
+      },
+      {
+        "name": "Bridged EURC",
+        "address": "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57",
+        "symbol": "EURC.e",
+        "decimals": 6
+      },
+      {
+        "name": "Wrapped Ether on Sonic",
+        "address": "0x309C92261178fA0CF748A855e90Ae73FDb79EBc7",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "name": "GOGGLES",
+        "address": "0x9fDbC3f8Abc05Fa8f3Ad3C17D2F806c1230c4564",
+        "symbol": "GOGLZ",
+        "decimals": 18
+      },
+      {
+        "name": "Beets Staked Sonic",
+        "address": "0xE5DA20F15420aD15DE0fa650600aFc998bbE3955",
+        "symbol": "stS",
+        "decimals": 18
+      },
+      {
+        "name": "Sonic USD",
+        "address": "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
+        "symbol": "scUSD",
+        "decimals": 6
+      },
       {
         "address": "0xB2a909b8bCce9B30BbC9d4c748fD897d6AD9c285",
         "name": "Ruggie's Pizza",
@@ -9,5 +51,5 @@
         "decimals": 18
       }
     ]
-  ]
+  ],
 }
