@@ -1,5 +1,5 @@
 {
-"name": "Kingdom Sonic Token List",
+  "name": "SHADOW: Sonic List",
   "tokens": [
     [
       {
@@ -51,5 +51,5 @@
         "decimals": 18
       }
     ]
-  ],
+  ]
 }
