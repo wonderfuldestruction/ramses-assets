@@ -61,6 +61,12 @@
         "name": "HeyAnon",
         "symbol": "Anon",
         "decimals": 18
+      },
+      {
+        "address": "0x17Af1Df44444AB9091622e4Aa66dB5BB34E51aD5",
+        "name": "Tin Hat Cat",
+        "symbol": "THC",
+        "decimals": 18
       }
     ]
   ]
