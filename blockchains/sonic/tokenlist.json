@@ -73,6 +73,12 @@
         "name": "Wagmi",
         "symbol": "WAGMI",
         "decimals": 18
+      },
+      {
+        "address": "0xe920d1DA9A4D59126dC35996Ea242d60EFca1304",
+        "name": "Derp Token",
+        "symbol": "DERP",
+        "decimals": 18
       }
     ]
   ]
