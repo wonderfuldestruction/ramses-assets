@@ -91,6 +91,12 @@
         "name": "SupraFi Staked Sonic",
         "symbol": "sS",
         "decimals": 18
+      },
+      {
+        "address": "0xFFC05D77E021F12878644537398160A54E33B5e4",
+        "name": "Candle Token",
+        "symbol": "CANDLE",
+        "decimals": 18
       }
     ]
   ]
