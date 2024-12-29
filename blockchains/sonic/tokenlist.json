@@ -115,6 +115,12 @@
         "name": "SuperSonicSpeedDemon",
         "symbol": "SPEED",
         "decimals": 18
+      },
+      {
+        "address": "0x05e31a691405d06708A355C029599c12d5da8b28",
+        "name": "FantomSonicInu",
+        "symbol": "fSONIC",
+        "decimals": 18
       }
     ]
   ]
