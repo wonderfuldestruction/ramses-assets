@@ -91,6 +91,12 @@
         "name": "SupraFi Staked Sonic",
         "symbol": "sS",
         "decimals": 18
+      },
+      {
+        "address": "0x690d956D97d3EEe18AB68ED1A28a89d531734F3d",
+        "name": "DiddyScrotumFree",
+        "symbol": "Moist",
+        "decimals": 18
       }
     ]
   ]
