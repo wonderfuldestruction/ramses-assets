@@ -109,6 +109,12 @@
         "name": "Familio",
         "symbol": "F",
         "decimals": 18
+      },
+      {
+        "address": "0x9990dE39Ca46151150E392Ca96EB349d0f549166",
+        "name": "SuperSonicSpeedDemon",
+        "symbol": "SPEED",
+        "decimals": 18
       }
     ]
   ]
