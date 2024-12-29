@@ -97,6 +97,12 @@
         "name": "Candle Token",
         "symbol": "CANDLE",
         "decimals": 18
+      },
+      {
+        "address": "0xBe422DD2F451348d5D0979D8ab25B4c6eAAd1eB2",
+        "name": "Familio",
+        "symbol": "F",
+        "decimals": 18
       }
     ]
   ]
