@@ -99,6 +99,12 @@
         "decimals": 18
       },
       {
+        "address": "0x690d956D97d3EEe18AB68ED1A28a89d531734F3d",
+        "name": "DiddyScrotumFree",
+        "symbol": "Moist",
+        "decimals": 18
+      },
+      {
         "address": "0xBe422DD2F451348d5D0979D8ab25B4c6eAAd1eB2",
         "name": "Familio",
         "symbol": "F",
