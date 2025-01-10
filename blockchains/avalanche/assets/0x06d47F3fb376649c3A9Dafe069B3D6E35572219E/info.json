@@ -1,0 +1,7 @@
+{
+    "name": "Staked avUSD",
+    "symbol": "savUSD",
+    "type": "ERC20",
+    "decimals": 18,
+    "id": "0x06d47F3fb376649c3A9Dafe069B3D6E35572219E"
+  }
