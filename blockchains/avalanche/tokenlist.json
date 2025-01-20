@@ -599,6 +599,12 @@
         "symbol": "BRUNO"
       },
       {
+        "address": "0xA80F36BA18c7f721F3F7ACDbcDEfd3a86869A036",
+        "decimals": 18,
+        "name": "OFFICIALTRUMP",
+        "symbol": "TRUMP"
+      },
+      {
         "address": "0xa43f06724E10561Ea416ad7438CCFC94f486374F",
         "name": "xAPEX",
         "symbol": "xAPEX",
