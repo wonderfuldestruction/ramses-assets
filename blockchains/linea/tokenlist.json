@@ -363,6 +363,12 @@
         "decimals": 18,
         "name": "Froxy",
         "symbol": "FROXY"
+      },
+      {
+        "address": "0xea3910f1C6E687B59835885904A2FD1944B51Ec6",
+        "name": "OFFICIAL TRUMP",
+        "symbol": "TRUMP",
+        "decimals": 18
       }
     ]
   ],
