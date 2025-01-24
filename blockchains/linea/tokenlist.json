@@ -369,6 +369,12 @@
         "name": "OFFICIAL TRUMP",
         "symbol": "TRUMP",
         "decimals": 18
+      },
+      {
+        "address": "0x464946f3f004b37014D272d6195aC131Eb54B94d",
+        "name": "Carrot",
+        "symbol": "CARROT",
+        "decimals": 18
       }
     ]
   ],
