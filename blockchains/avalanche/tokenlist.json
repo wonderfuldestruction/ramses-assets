@@ -657,6 +657,12 @@
         "name": "FUEGO",
         "symbol": "FUEGO",
         "decimals": 18
+      },
+      {
+        "address": "0x1c7c53aa86B49A28C627B6450091998e447A42f9",
+        "name": "VELVET AI",
+        "symbol": "VELAI",
+        "decimals": 18
       }
     ]
   ],
