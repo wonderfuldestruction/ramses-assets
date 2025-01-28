@@ -663,6 +663,12 @@
         "name": "VELVET AI",
         "symbol": "VELAI",
         "decimals": 18
+      },
+      {
+        "address": "0xCAFE4aFB0f1D1A8aF4C6dF1FDe7Be88D15ae8bF4",
+        "name": "ChatNet Token",
+        "symbol": "CHAT",
+        "decimals": 18
       }
     ]
   ],
