@@ -375,6 +375,12 @@
         "name": "Carrot",
         "symbol": "CARROT",
         "decimals": 18
+      },
+      {
+        "address": "0xc59d7bD763d4B0DFE9293eDAE91cfe385E0e6a20",
+        "name": "FrensAutomator Token",
+        "symbol": "FRENS",
+        "decimals": 18
       }
     ]
   ],
