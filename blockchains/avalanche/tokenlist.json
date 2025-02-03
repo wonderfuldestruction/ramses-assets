@@ -669,6 +669,12 @@
         "name": "ChatNet Token",
         "symbol": "CHAT",
         "decimals": 18
+      },
+      {
+        "address": "0x73831E7c5577859FB0583aF97C9C68F96A43fcB6",
+        "name": "AIGG",
+        "symbol": "$AIGG",
+        "decimals": 18
       }
     ]
   ],
