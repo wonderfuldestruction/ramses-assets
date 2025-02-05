@@ -687,6 +687,12 @@
         "name": "Pulsar",
         "symbol": "PLSR",
         "decimals": 18
+      },
+      {
+        "address": "0x20BB40170C489aaEfCa519d21975538FbC1c5Bd4",
+        "name": "wtfstopselling",
+        "symbol": "wtf",
+        "decimals": 18
       }
     ]
   ],
