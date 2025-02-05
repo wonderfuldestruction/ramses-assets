@@ -681,6 +681,12 @@
         "name": "Euro Coin",
         "symbol": "EURC",
         "decimals": 6
+      },
+      {
+        "address": "0x7a842193D291840FC38B45f991c5B8cC908f8A7C",
+        "name": "Pulsar",
+        "symbol": "PLSR",
+        "decimals": 18
       }
     ]
   ],
