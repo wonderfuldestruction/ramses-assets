@@ -689,6 +689,12 @@
         "decimals": 18
       },
       {
+        "address": "0xFF24003428Fb2E969C39EdEe4e9F464b0b78313d",
+        "name": "Waifu",
+        "symbol": "WAIFU",
+        "decimals": 18
+      },
+      {
         "address": "0x20BB40170C489aaEfCa519d21975538FbC1c5Bd4",
         "name": "wtfstopselling",
         "symbol": "wtf",
