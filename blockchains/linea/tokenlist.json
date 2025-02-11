@@ -381,6 +381,12 @@
         "name": "FrensAutomator Token",
         "symbol": "FRENS",
         "decimals": 18
+      },
+      {
+        "address": "0xe684c87C6Ec06BD002a71ffd0A6638C280e82FBa",
+        "name": "THANOS WAS RIGHT",
+        "symbol": "TWR",
+        "decimals": 18
       }
     ]
   ],
