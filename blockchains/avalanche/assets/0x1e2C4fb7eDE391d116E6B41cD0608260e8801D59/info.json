@@ -1,0 +1,7 @@
+{
+  "name": "Backed CSPX S&P 500",
+  "symbol": "bCSPX",
+  "type": "ERC20",
+  "decimals": 18,
+  "id": "0x1e2C4fb7eDE391d116E6B41cD0608260e8801D59"
+}
