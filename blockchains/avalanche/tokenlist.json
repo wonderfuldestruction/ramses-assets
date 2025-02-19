@@ -717,7 +717,7 @@
         "symbol": "rsAVAX",
         "decimals": 18
       },{
-        "address": "0xe684F692bdf5B3B0DB7E8e31a276DE8A2E9F0025"
+        "address": "0xe684F692bdf5B3B0DB7E8e31a276DE8A2E9F0025",
         "name": "Restaked BTC.b",
         "symbol": "rBTC.b",
         "decimals": 18,
