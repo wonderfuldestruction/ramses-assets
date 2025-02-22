@@ -741,15 +741,23 @@
         "name": "WINK",
         "symbol": "WINK",
         "decimals": 18
-      },{
+      },
+      {
         "address": "0xDf788AD40181894dA035B827cDF55C523bf52F67",
         "name": "Restaked sAVAX",
         "symbol": "rsAVAX",
         "decimals": 18
-      },{
+      },
+      {
         "address": "0xe684F692bdf5B3B0DB7E8e31a276DE8A2E9F0025",
         "name": "Restaked BTC.b",
         "symbol": "rBTC.b",
+        "decimals": 18
+      },
+      {
+        "address": "0x00697F5F6dc2CA0A17e6c89bCcd1173A61eA24a6",
+        "name": "Bensi Box Token",
+        "symbol": "BENSI",
         "decimals": 18
       }
     ]
