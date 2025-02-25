@@ -1,0 +1,7 @@
+{
+    "name": "BRZ Token",
+    "symbol": "BRZ",
+    "type": "ERC20",
+    "decimals": 18,
+    "id": "0x05539F021b66Fd01d1FB1ff8E167CdD09bf7c2D0"
+  }
