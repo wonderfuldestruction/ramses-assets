@@ -759,6 +759,12 @@
         "name": "Bensi Box Token",
         "symbol": "BENSI",
         "decimals": 18
+      },
+      {
+        "address": "0xa77d05fd853af120cD4dB48e73498E0cAbD3F628",
+        "name": "AI 404",
+        "symbol": "ERROR",
+        "decimals": 18
       }
     ]
   ],
