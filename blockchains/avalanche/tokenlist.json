@@ -765,6 +765,12 @@
         "name": "AI 404",
         "symbol": "ERROR",
         "decimals": 18
+      },
+      {
+        "address": "0x0f669808d88B2b0b3D23214DCD2a1cc6A8B1B5cd",
+        "name": "Blub",
+        "symbol": "BLUB",
+        "decimals": 18
       }
     ]
   ],
