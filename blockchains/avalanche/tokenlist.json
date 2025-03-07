@@ -771,6 +771,12 @@
         "name": "Blub",
         "symbol": "BLUB",
         "decimals": 18
+      },
+      {
+        "address": "0x35A7341Ae0adb31Cb210524D4D02563c061Feac5",
+        "name": "Woof",
+        "symbol": "WOOF",
+        "decimals": 18
       }
     ]
   ],
