@@ -11,6 +11,12 @@
         "decimals": 18
       },
       {
+        "name": "MyStandard",
+        "address": "0x0256B279D973C8d687264AC3eB36bE09232D4474",
+        "symbol": "MYST",
+        "decimals": 18
+      },
+      {
         "name": "Wrapped Backed Strategy",
         "address": "0x1a4F71B0Ff3C22540887bcf83b50054a213c673d",
         "symbol": "wbMSTR",
