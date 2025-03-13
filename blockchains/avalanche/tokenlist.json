@@ -789,6 +789,12 @@
         "name": "Lil Coq",
         "symbol": "LIL",
         "decimals": 18
+      },
+      {
+        "address": "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
       }
     ]
   ],
