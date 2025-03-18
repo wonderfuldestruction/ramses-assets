@@ -795,7 +795,13 @@
         "name": "Wrapped BTC",
         "symbol": "WBTC",
         "decimals": 8
-      }
+      },
+	  {
+		"address" : "0xc970D70234895dD6033f984Fd00909623C666e66",
+		"name": "Quasi",
+		"symbol": "QUASI",
+		"decimals": 18
+	  }
     ]
   ],
   "version": {
