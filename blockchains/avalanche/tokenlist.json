@@ -801,6 +801,12 @@
     	"name": "Bellum",
     	"symbol": "BELL",
 	    "decimals": 18
+      },
+      {
+        "address": "0x41CBfD7C8709d1E459CE816703a1Fc882DAa77D3",
+        "name": "Loksmith",
+        "symbol": "LOK",
+        "decimals": 18
       }
     ]
   ],
