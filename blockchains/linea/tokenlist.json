@@ -393,6 +393,12 @@
         "name": "Frax USD",
         "symbol": "frxUSD",
         "decimals": 18
+      },
+      {
+        "address": "0xaD09085191216a94FA1Fd2A790E48e734602a869",
+        "name": "Constellation ETH",
+        "symbol": "xrETH",
+        "decimals": 18
       }
     ]
   ],
