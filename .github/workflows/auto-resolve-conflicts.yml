@@ -20,18 +20,72 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Auto-update PR with main branch
+      - name: Create merge script
+        run: |
+          cat > merge_tokenlist.py << 'EOL'
+          import json
+          import re
+          import sys
+
+          def merge_tokenlists(filepath):
+              with open(filepath, 'r') as f:
+                  content = f.read()
+
+              # Extract the sections using regex
+              pattern = r'<<<<<<< HEAD(.*?)=====+(.*?)>>>>>>> .*'
+              match = re.search(pattern, content, re.DOTALL)
+              if not match:
+                  raise Exception('Could not find conflict markers')
+              
+              ours = match.group(1).strip()
+              theirs = match.group(2).strip()
+              
+              # Parse both versions
+              try:
+                  ours_json = json.loads(ours)
+                  theirs_json = json.loads(theirs)
+              except json.JSONDecodeError as e:
+                  raise Exception(f'Failed to parse JSON: {str(e)}')
+              
+              # Get all tokens
+              our_tokens = ours_json.get('tokens', [[]])[0]
+              their_tokens = theirs_json.get('tokens', [[]])[0]
+              
+              # Create a map of existing tokens by lowercase address
+              merged_tokens = {}
+              for token in our_tokens:
+                  merged_tokens[token['address'].lower()] = token
+              
+              # Add their tokens if not already present
+              for token in their_tokens:
+                  if token['address'].lower() not in merged_tokens:
+                      merged_tokens[token['address'].lower()] = token
+              
+              # Create the merged result
+              result = ours_json.copy()
+              result['tokens'] = [list(merged_tokens.values())]
+              
+              # Write back the merged file
+              with open(filepath, 'w') as f:
+                  json.dump(result, f, indent=2, sort_keys=True)
+                  f.write('\n')
+              
+              print(f'Successfully merged {filepath}')
+
+          if __name__ == '__main__':
+              if len(sys.argv) != 2:
+                  print('Usage: python merge_tokenlist.py <filepath>')
+                  sys.exit(1)
+              merge_tokenlists(sys.argv[1])
+          EOL
+
+      - name: Fix PR conflicts
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           PR_BRANCH=${{ github.event.pull_request.head.ref }}
           PR_REPO=${{ github.event.pull_request.head.repo.full_name }}
           
-          echo "Updating PR #$PR_NUMBER from $PR_REPO:$PR_BRANCH"
+          echo "Checking PR #$PR_NUMBER from $PR_REPO:$PR_BRANCH"
           
           # If it's a fork, we need to checkout the PR directly
           if [ "$PR_REPO" != "${{ github.repository }}" ]; then
@@ -65,46 +119,10 @@ jobs:
             fi
             
             for FILE in $CONFLICTED_FILES; do
-              # Extract and merge the tokenlist entries
-              node -e "
-                const fs = require('fs');
-                
-                // Read the conflicted file with markers
-                const content = fs.readFileSync('$FILE', 'utf8');
-                
-                // Extract the sections
-                const [header, ours, theirs, footer] = content.split(/<<<<<<< HEAD|=======|>>>>>>> .*/);
-                
-                try {
-                  // Parse JSON from both sides (handling potential formatting issues)
-                  const oursJson = JSON.parse(header + ours);
-                  const theirsJson = JSON.parse(header + theirs + footer);
-                  
-                  // Merge the token lists (avoiding duplicates)
-                  const mergedTokens = [...oursJson.tokens[0]];
-                  const existingAddresses = new Set(mergedTokens.map(token => token.address.toLowerCase()));
-                  
-                  theirsJson.tokens[0].forEach(token => {
-                    if (!existingAddresses.has(token.address.toLowerCase())) {
-                      mergedTokens.push(token);
-                      existingAddresses.add(token.address.toLowerCase());
-                    }
-                  });
-                  
-                  // Create merged result
-                  const result = {
-                    ...oursJson,
-                    tokens: [mergedTokens]
-                  };
-                  
-                  // Write merged file
-                  fs.writeFileSync('$FILE', JSON.stringify(result, null, 2) + '\n');
-                  console.log('Successfully merged $FILE');
-                } catch (error) {
-                  console.error('Error merging $FILE:', error);
-                  process.exit(1);
-                }
-              "
+              echo "Resolving conflicts in $FILE"
+              
+              # Use our Python script to merge the JSON
+              python3 merge_tokenlist.py "$FILE"
               
               # Mark as resolved
               git add "$FILE"
@@ -121,7 +139,7 @@ jobs:
               gh pr comment "$PR_NUMBER" --body "I detected conflicts with the main branch but couldn't automatically fix them because this PR is from a fork. Please merge the main branch into your PR branch to resolve conflicts."
             else
               git push origin "$PR_BRANCH"
-              gh pr comment "$PR_NUMBER" --body "I've automatically resolved conflicts with the main branch by merging the token entries."
+              gh pr comment "$PR_NUMBER" --body "I've automatically resolved conflicts with the main branch by merging all token entries."
             fi
           else
             # This should not happen since we already checked for conflicts
