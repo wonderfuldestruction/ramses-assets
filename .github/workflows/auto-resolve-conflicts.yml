@@ -40,17 +40,19 @@ jobs:
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           
           # Get PR details including branch name and repo
-          PR_DETAILS=$(gh pr view $PR_NUMBER --json headRefName,headRepository,files,mergeStateStatus)
+          PR_DETAILS=$(gh pr view $PR_NUMBER --json headRefName,headRepositoryOwner,headRepository,files,mergeStateStatus)
           echo "PR details: $PR_DETAILS"
           
           PR_BRANCH=$(echo "$PR_DETAILS" | jq -r '.headRefName')
-          PR_REPO=$(echo "$PR_DETAILS" | jq -r '.headRepository.nameWithOwner')
+          REPO_OWNER=$(echo "$PR_DETAILS" | jq -r '.headRepositoryOwner.login')
+          REPO_NAME=$(echo "$PR_DETAILS" | jq -r '.headRepository.name')
+          PR_REPO="${REPO_OWNER}/${REPO_NAME}"
           MERGE_STATE=$(echo "$PR_DETAILS" | jq -r '.mergeStateStatus')
           
           echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
           echo "pr_repo=$PR_REPO" >> $GITHUB_OUTPUT
           echo "merge_state=$MERGE_STATE" >> $GITHUB_OUTPUT
-          echo "PR #$PR_NUMBER merge state: $MERGE_STATE"
+          echo "PR #$PR_NUMBER from $PR_REPO:$PR_BRANCH merge state: $MERGE_STATE"
           
           # Check which files were modified
           MODIFIED_FILES=$(echo "$PR_DETAILS" | jq -r '.files[].path')
@@ -67,12 +69,53 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Only continue if we're able to extract the repository information
+      - name: Validate PR information
+        id: validate-pr
+        run: |
+          PR_REPO="${{ steps.pr-info.outputs.pr_repo }}"
+          
+          if [[ "$PR_REPO" == "/" || "$PR_REPO" == "null/" || "$PR_REPO" == "/null" ]]; then
+            echo "Invalid repository information: $PR_REPO"
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            
+            # Try to get repository info with another approach for forks
+            PR_NUMBER="${{ steps.pr-info.outputs.pr_number }}"
+            FORK_INFO=$(gh pr view $PR_NUMBER --json headRepository,headRef --jq '.headRepository.owner.login + "/" + .headRepository.name + ":" + .headRef')
+            echo "Alternate PR info: $FORK_INFO"
+            
+            if [[ "$FORK_INFO" != "/" && "$FORK_INFO" != *"null"* ]]; then
+              # Extract repo and branch from FORK_INFO (format: "owner/name:branch")
+              REPO_PART=$(echo "$FORK_INFO" | cut -d':' -f1)
+              BRANCH_PART=$(echo "$FORK_INFO" | cut -d':' -f2)
+              
+              echo "pr_repo=$REPO_PART" >> $GITHUB_OUTPUT
+              echo "pr_branch=$BRANCH_PART" >> $GITHUB_OUTPUT
+              echo "is_valid=true" >> $GITHUB_OUTPUT
+              echo "Recovered PR info: $REPO_PART:$BRANCH_PART"
+            else
+              # If we're in manual workflow_dispatch mode for a PR from the same repo
+              if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+                echo "pr_repo=${{ github.repository }}" >> $GITHUB_OUTPUT
+                echo "is_valid=true" >> $GITHUB_OUTPUT
+                echo "Using current repository for local PR branch"
+              else
+                echo "Could not determine PR repository information"
+              fi
+            fi
+          else
+            echo "Repository information valid: $PR_REPO"
+            echo "is_valid=true" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup PR branch
-        if: steps.pr-info.outputs.has_tokenlist_changes == 'true'
+        if: steps.pr-info.outputs.has_tokenlist_changes == 'true' && steps.validate-pr.outputs.is_valid == 'true'
         run: |
           PR_NUMBER="${{ steps.pr-info.outputs.pr_number }}"
-          PR_BRANCH="${{ steps.pr-info.outputs.pr_branch }}"
-          PR_REPO="${{ steps.pr-info.outputs.pr_repo }}"
+          PR_BRANCH="${{ steps.validate-pr.outputs.pr_branch || steps.pr-info.outputs.pr_branch }}"
+          PR_REPO="${{ steps.validate-pr.outputs.pr_repo || steps.pr-info.outputs.pr_repo }}"
           
           echo "Setting up branch for PR #$PR_NUMBER ($PR_REPO:$PR_BRANCH)"
           
@@ -82,8 +125,14 @@ jobs:
             git fetch pr-fork "$PR_BRANCH"
             git checkout -b "$PR_BRANCH" "pr-fork/$PR_BRANCH"
           else
-            git fetch origin "$PR_BRANCH"
-            git checkout "$PR_BRANCH"
+            # For same-repo PRs, we can try to check out directly
+            if git fetch origin "refs/pull/$PR_NUMBER/head:$PR_BRANCH"; then
+              git checkout "$PR_BRANCH"
+            else
+              echo "Could not fetch the PR branch directly, trying alternate method"
+              git fetch origin "$PR_BRANCH" || true
+              git checkout -b "$PR_BRANCH" "origin/$PR_BRANCH" || git checkout -b "$PR_BRANCH"
+            fi
           fi
           
           # Make sure we have the latest main branch
