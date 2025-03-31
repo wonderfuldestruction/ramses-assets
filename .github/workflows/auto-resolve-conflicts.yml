@@ -40,13 +40,17 @@ jobs:
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           
           # Get PR details including branch name and repo
-          PR_DETAILS=$(gh pr view $PR_NUMBER --json headRefName,headRepository,files)
+          PR_DETAILS=$(gh pr view $PR_NUMBER --json headRefName,headRepository,files,mergeStateStatus)
+          echo "PR details: $PR_DETAILS"
           
           PR_BRANCH=$(echo "$PR_DETAILS" | jq -r '.headRefName')
           PR_REPO=$(echo "$PR_DETAILS" | jq -r '.headRepository.nameWithOwner')
+          MERGE_STATE=$(echo "$PR_DETAILS" | jq -r '.mergeStateStatus')
           
           echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
           echo "pr_repo=$PR_REPO" >> $GITHUB_OUTPUT
+          echo "merge_state=$MERGE_STATE" >> $GITHUB_OUTPUT
+          echo "PR #$PR_NUMBER merge state: $MERGE_STATE"
           
           # Check which files were modified
           MODIFIED_FILES=$(echo "$PR_DETAILS" | jq -r '.files[].path')
@@ -81,6 +85,9 @@ jobs:
             git fetch origin "$PR_BRANCH"
             git checkout "$PR_BRANCH"
           fi
+          
+          # Make sure we have the latest main branch
+          git fetch origin main
         
       - name: Create merge script
         if: steps.pr-info.outputs.has_tokenlist_changes == 'true'
@@ -249,7 +256,7 @@ jobs:
               sys.exit(0 if success else 1)
           EOL
 
-      - name: Force merge and resolve conflicts
+      - name: Force merge attempt
         if: steps.pr-info.outputs.has_tokenlist_changes == 'true'
         run: |
           PR_NUMBER="${{ steps.pr-info.outputs.pr_number }}"
@@ -257,14 +264,14 @@ jobs:
           PR_REPO="${{ steps.pr-info.outputs.pr_repo }}"
           TOKENLIST_FILES="${{ steps.pr-info.outputs.tokenlist_files }}"
           
-          echo "Forcing conflict check and resolution for PR #$PR_NUMBER"
+          echo "Always attempting merge for PR #$PR_NUMBER regardless of reported conflict status"
           
-          # Always try to merge with main, even if GitHub API doesn't report conflicts
+          # Directly attempt a merge without checking conflict status
           if git merge origin/main --no-edit; then
-            echo "No conflicts detected during merge"
+            echo "Merge completed without conflicts"
             
             # Check if any tokenlist files have been modified by the merge
-            CHANGED_FILES=$(git diff --name-only HEAD@{1} HEAD)
+            CHANGED_FILES=$(git diff --name-only HEAD@{1} HEAD || echo "")
             CHANGED_TOKENLIST=$(echo "$CHANGED_FILES" | grep tokenlist.json || echo "")
             
             if [ -n "$CHANGED_TOKENLIST" ]; then
@@ -287,7 +294,7 @@ jobs:
               echo "No tokenlist files were modified by the merge. Nothing to do."
             fi
           else
-            echo "Conflicts detected during merge with main"
+            echo "Merge failed due to conflicts. Attempting to resolve..."
             
             # Check if any tokenlist files are conflicted
             CONFLICTED_FILES=$(git diff --name-only --diff-filter=U | grep tokenlist.json || echo "")
@@ -302,7 +309,7 @@ jobs:
             
             # Resolve each conflicted tokenlist file
             for FILE in $CONFLICTED_FILES; do
-              echo "Resolving conflicts in $FILE"
+              echo "Resolving conflicts in $FILE using Python script"
               
               # Use the Python script to resolve conflicts
               python3 merge_tokenlist.py "$FILE"
@@ -312,10 +319,32 @@ jobs:
                 echo "Successfully resolved conflicts in $FILE"
                 git add "$FILE"
               else
-                echo "Failed to resolve conflicts in $FILE, aborting"
-                git merge --abort
-                gh pr comment "$PR_NUMBER" --body "I couldn't automatically resolve conflicts in $FILE. Please merge the main branch manually to resolve conflicts."
-                exit 1
+                echo "Failed to resolve conflicts in $FILE, trying manual approach"
+                
+                # Get both versions
+                git show HEAD:$FILE > our_version.json
+                git show origin/main:$FILE > main_version.json
+                
+                # Manually merge using jq
+                echo "Attempting to merge with jq..."
+                jq -s '
+                  .[0].tokens as $our_tokens |
+                  .[1].tokens as $their_tokens |
+                  .[0] + {
+                    "tokens": ($our_tokens + $their_tokens | unique_by(.address | ascii_downcase))
+                  }
+                ' our_version.json main_version.json > merged.json
+                
+                if [ $? -eq 0 ] && [ -s merged.json ]; then
+                  echo "jq merge successful"
+                  mv merged.json $FILE
+                  git add "$FILE"
+                else
+                  echo "All merge attempts failed, aborting"
+                  git merge --abort
+                  gh pr comment "$PR_NUMBER" --body "I couldn't automatically resolve conflicts in $FILE. Please merge the main branch manually to resolve conflicts."
+                  exit 1
+                fi
               fi
             done
             
