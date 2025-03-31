@@ -113,6 +113,10 @@ jobs:
       - name: Setup PR branch
         if: steps.pr-info.outputs.has_tokenlist_changes == 'true' && steps.validate-pr.outputs.is_valid == 'true'
         run: |
+          # Set up Git identity first
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          
           PR_NUMBER="${{ steps.pr-info.outputs.pr_number }}"
           PR_BRANCH="${{ steps.validate-pr.outputs.pr_branch || steps.pr-info.outputs.pr_branch }}"
           PR_REPO="${{ steps.validate-pr.outputs.pr_repo || steps.pr-info.outputs.pr_repo }}"
@@ -308,6 +312,10 @@ jobs:
       - name: Force merge attempt
         if: steps.pr-info.outputs.has_tokenlist_changes == 'true'
         run: |
+          # Set Git identity
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          
           PR_NUMBER="${{ steps.pr-info.outputs.pr_number }}"
           PR_BRANCH="${{ steps.pr-info.outputs.pr_branch }}"
           PR_REPO="${{ steps.pr-info.outputs.pr_repo }}"
@@ -326,10 +334,7 @@ jobs:
             if [ -n "$CHANGED_TOKENLIST" ]; then
               echo "The merge modified these tokenlist files: $CHANGED_TOKENLIST"
               
-              # Make a commit with the merged changes
-              git config user.name "GitHub Actions"
-              git config user.email "actions@github.com"
-              git commit -m "Merge main into PR to update tokenlist files"
+              # Make a commit with the merged changes (already committed by git merge)
               
               # Push the changes
               if [ "$PR_REPO" != "${{ github.repository }}" ]; then
@@ -350,7 +355,7 @@ jobs:
             
             if [ -z "$CONFLICTED_FILES" ]; then
               echo "No tokenlist conflicts found, aborting merge"
-              git merge --abort
+              git merge --abort || echo "No merge to abort"
               exit 0
             fi
             
@@ -371,8 +376,8 @@ jobs:
                 echo "Failed to resolve conflicts in $FILE, trying manual approach"
                 
                 # Get both versions
-                git show HEAD:$FILE > our_version.json
-                git show origin/main:$FILE > main_version.json
+                git show HEAD:$FILE > our_version.json || echo "{\"tokens\":[]}" > our_version.json
+                git show origin/main:$FILE > main_version.json || echo "{\"tokens\":[]}" > main_version.json
                 
                 # Manually merge using jq
                 echo "Attempting to merge with jq..."
@@ -390,7 +395,7 @@ jobs:
                   git add "$FILE"
                 else
                   echo "All merge attempts failed, aborting"
-                  git merge --abort
+                  git merge --abort || echo "No merge to abort"
                   gh pr comment "$PR_NUMBER" --body "I couldn't automatically resolve conflicts in $FILE. Please merge the main branch manually to resolve conflicts."
                   exit 1
                 fi
@@ -398,8 +403,6 @@ jobs:
             done
             
             # Commit the resolved conflicts
-            git config user.name "GitHub Actions"
-            git config user.email "actions@github.com"
             git commit -m "Auto-resolve tokenlist conflicts with main"
             
             # Push the changes
