@@ -1,150 +1,247 @@
 name: Auto-Resolve Tokenlist Conflicts
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - '**/tokenlist.json'
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   resolve-conflicts:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Create merge script
+      - name: Check if PR has conflicts
+        id: check-conflicts
         run: |
-          cat > merge_tokenlist.py << 'EOL'
-          import json
-          import re
-          import sys
-
-          def merge_tokenlists(filepath):
-              with open(filepath, 'r') as f:
-                  content = f.read()
-
-              # Extract the sections using regex
-              pattern = r'<<<<<<< HEAD(.*?)=====+(.*?)>>>>>>> .*'
-              match = re.search(pattern, content, re.DOTALL)
-              if not match:
-                  raise Exception('Could not find conflict markers')
-              
-              ours = match.group(1).strip()
-              theirs = match.group(2).strip()
-              
-              # Parse both versions
-              try:
-                  ours_json = json.loads(ours)
-                  theirs_json = json.loads(theirs)
-              except json.JSONDecodeError as e:
-                  raise Exception(f'Failed to parse JSON: {str(e)}')
-              
-              # Get all tokens
-              our_tokens = ours_json.get('tokens', [[]])[0]
-              their_tokens = theirs_json.get('tokens', [[]])[0]
-              
-              # Create a map of existing tokens by lowercase address
-              merged_tokens = {}
-              for token in our_tokens:
-                  merged_tokens[token['address'].lower()] = token
-              
-              # Add their tokens if not already present
-              for token in their_tokens:
-                  if token['address'].lower() not in merged_tokens:
-                      merged_tokens[token['address'].lower()] = token
-              
-              # Create the merged result
-              result = ours_json.copy()
-              result['tokens'] = [list(merged_tokens.values())]
-              
-              # Write back the merged file
-              with open(filepath, 'w') as f:
-                  json.dump(result, f, indent=2, sort_keys=True)
-                  f.write('\n')
-              
-              print(f'Successfully merged {filepath}')
-
-          if __name__ == '__main__':
-              if len(sys.argv) != 2:
-                  print('Usage: python merge_tokenlist.py <filepath>')
-                  sys.exit(1)
-              merge_tokenlists(sys.argv[1])
-          EOL
-
-      - name: Fix PR conflicts
-        run: |
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          PR_BRANCH=${{ github.event.pull_request.head.ref }}
-          PR_REPO=${{ github.event.pull_request.head.repo.full_name }}
+          # Get PR info using GitHub CLI
+          echo "Getting PR info for #${{ github.event.pull_request.number }}"
+          PR_INFO=$(gh pr view ${{ github.event.pull_request.number }} --json mergeStateStatus,mergeable,state,files)
+          echo "PR Info: $PR_INFO"
           
-          echo "Checking PR #$PR_NUMBER from $PR_REPO:$PR_BRANCH"
+          # Extract merge status and files
+          MERGE_STATE=$(echo "$PR_INFO" | jq -r '.mergeStateStatus')
+          MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable')
+          MODIFIED_FILES=$(echo "$PR_INFO" | jq -r '.files[].path')
           
-          # If it's a fork, we need to checkout the PR directly
-          if [ "$PR_REPO" != "${{ github.repository }}" ]; then
-            git remote add pr-fork https://github.com/$PR_REPO.git
-            git fetch pr-fork "$PR_BRANCH"
-            git checkout -b "$PR_BRANCH" pr-fork/"$PR_BRANCH"
+          echo "Merge state: $MERGE_STATE"
+          echo "Mergeable: $MERGEABLE"
+          echo "Modified files: $MODIFIED_FILES"
+          
+          # Check if any tokenlist files are modified
+          TOKENLIST_FILES=$(echo "$MODIFIED_FILES" | grep -E 'tokenlist\.json$' || echo "")
+          
+          if [ -z "$TOKENLIST_FILES" ]; then
+            echo "No tokenlist files modified in this PR"
+            echo "has_tokenlist_changes=false" >> $GITHUB_OUTPUT
+            exit 0
           else
-            git fetch origin "$PR_BRANCH"
-            git checkout "$PR_BRANCH"
+            echo "Tokenlist files modified: $TOKENLIST_FILES"
+            echo "has_tokenlist_changes=true" >> $GITHUB_OUTPUT
+            echo "tokenlist_files=$TOKENLIST_FILES" >> $GITHUB_OUTPUT
           fi
           
-          # Check for conflicts before attempting to merge
-          if ! gh pr view "$PR_NUMBER" --json mergeStateStatus | grep -q "CONFLICTING"; then
-            echo "PR #$PR_NUMBER has no conflicts with main. No action needed."
+          # Check explicit conflict status
+          if [ "$MERGE_STATE" == "CONFLICTING" ] || [ "$MERGEABLE" == "false" ]; then
+            echo "PR has conflicts according to GitHub API"
+            echo "has_conflicts=true" >> $GITHUB_OUTPUT
+          else
+            # Perform a local check for conflicts
+            git fetch origin main
+            if git merge-tree $(git merge-base HEAD origin/main) HEAD origin/main | grep -q "^<<<<<<< "; then
+              echo "Found conflicts using git merge-tree method"
+              echo "has_conflicts=true" >> $GITHUB_OUTPUT
+            else
+              echo "No conflicts detected"
+              echo "has_conflicts=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve tokenlist conflicts
+        if: steps.check-conflicts.outputs.has_conflicts == 'true' && steps.check-conflicts.outputs.has_tokenlist_changes == 'true'
+        run: |
+          echo "Attempting to resolve conflicts..."
+          
+          # Make sure we have the latest version of main
+          git fetch origin main
+          
+          # Try to merge main (this will result in conflicts)
+          git merge origin/main || true
+          
+          # Check if there are conflicts in tokenlist files
+          CONFLICTED_FILES=$(git diff --name-only --diff-filter=U | grep tokenlist.json || echo "")
+          
+          if [ -z "$CONFLICTED_FILES" ]; then
+            echo "No tokenlist conflicts found despite reported conflicts"
+            git merge --abort
             exit 0
           fi
           
-          echo "PR #$PR_NUMBER has conflicts with main. Attempting to resolve..."
+          echo "Found conflicts in tokenlist files: $CONFLICTED_FILES"
           
-          # Try to merge main branch
-          if ! git merge origin/main --no-edit; then
-            echo "Conflict detected in PR #$PR_NUMBER, resolving automatically"
+          # Loop through each conflicted tokenlist file
+          for FILE in $CONFLICTED_FILES; do
+            echo "Resolving conflicts in $FILE"
             
-            # Find conflicted tokenlist files
-            CONFLICTED_FILES=$(git diff --name-only --diff-filter=U | grep tokenlist.json)
+            # Create a temporary file to store the merged result
+            touch merged_tokenlist.json
             
-            if [ -z "$CONFLICTED_FILES" ]; then
-              echo "No tokenlist conflicts found, aborting merge"
-              git merge --abort
-              exit 0
-            fi
-            
-            for FILE in $CONFLICTED_FILES; do
-              echo "Resolving conflicts in $FILE"
+            # Use Node.js to merge the tokenlist files intelligently
+            node -e "
+              const fs = require('fs');
               
-              # Use our Python script to merge the JSON
-              python3 merge_tokenlist.py "$FILE"
-              
-              # Mark as resolved
+              try {
+                // Read the conflicted file
+                const content = fs.readFileSync('$FILE', 'utf8');
+                console.log('Conflicted file length: ' + content.length + ' bytes');
+                
+                // Split content by conflict markers
+                const parts = content.split(/<<<<<<< HEAD|=======|>>>>>>> origin\/main/);
+                console.log('Found ' + parts.length + ' parts in conflict markers');
+                
+                if (parts.length < 3) {
+                  console.error('Unexpected conflict marker format');
+                  process.exit(1);
+                }
+                
+                // Extract our version and their version
+                let ours = '';
+                let theirs = '';
+                
+                if (parts.length >= 4) {
+                  // Standard conflict format
+                  ours = parts[1];
+                  theirs = parts[2];
+                }
+                
+                // Try to parse JSON from both versions
+                // We need to handle the case where the conflict might be in the middle of the JSON
+                // First, try to find complete JSON objects
+                
+                function findAndParseJson(text) {
+                  const jsonPattern = /{[\\s\\S]*}/;
+                  const match = text.match(jsonPattern);
+                  
+                  if (match) {
+                    try {
+                      return JSON.parse(match[0]);
+                    } catch (e) {
+                      console.log('Error parsing JSON: ' + e.message);
+                    }
+                  }
+                  
+                  return null;
+                }
+                
+                // Alternative approach: read the original files
+                const ourJson = findAndParseJson(ours);
+                const theirJson = findAndParseJson(theirs);
+                
+                if (!ourJson || !theirJson) {
+                  // Fallback: read the original file versions
+                  console.log('Couldn\\'t parse JSON from conflict markers, trying original files');
+                  
+                  // Get the current branch name
+                  const execSync = require('child_process').execSync;
+                  const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+                  
+                  // Save both versions to temporary files
+                  execSync('git show HEAD:' + '$FILE' + ' > our_tokenlist.json');
+                  execSync('git show origin/main:' + '$FILE' + ' > their_tokenlist.json');
+                  
+                  // Read and parse the files
+                  const ourFileContent = fs.readFileSync('our_tokenlist.json', 'utf8');
+                  const theirFileContent = fs.readFileSync('their_tokenlist.json', 'utf8');
+                  
+                  try {
+                    const parsedOurJson = JSON.parse(ourFileContent);
+                    const parsedTheirJson = JSON.parse(theirFileContent);
+                    
+                    // Use these parsed objects
+                    ourJson = parsedOurJson;
+                    theirJson = parsedTheirJson;
+                  } catch (e) {
+                    console.error('Error parsing original files: ' + e.message);
+                    process.exit(1);
+                  }
+                }
+                
+                if (!ourJson || !theirJson) {
+                  console.error('Failed to parse JSON from both the conflict markers and original files');
+                  process.exit(1);
+                }
+                
+                console.log('Successfully parsed both versions of tokenlist');
+                
+                // Merge token lists (keeping all unique tokens from both sides)
+                const mergedTokens = [...ourJson.tokens || []];
+                const existingAddresses = new Set(
+                  mergedTokens.map(token => (token.address || '').toLowerCase())
+                );
+                
+                // Add tokens from main that don't exist in our branch
+                let addedCount = 0;
+                (theirJson.tokens || []).forEach(token => {
+                  if (token.address && !existingAddresses.has(token.address.toLowerCase())) {
+                    mergedTokens.push(token);
+                    existingAddresses.add(token.address.toLowerCase());
+                    addedCount++;
+                  }
+                });
+                
+                console.log('Added ' + addedCount + ' tokens from main branch');
+                
+                // Create the final merged tokenlist
+                const mergedJson = {
+                  ...ourJson,
+                  tokens: mergedTokens
+                };
+                
+                // Write the merged result
+                fs.writeFileSync('merged_tokenlist.json', JSON.stringify(mergedJson, null, 2));
+                console.log('Successfully created merged tokenlist');
+              } catch (error) {
+                console.error('Error during merge process: ' + error.message);
+                process.exit(1);
+              }
+            "
+            
+            # Check if the merge was successful
+            if [ -s merged_tokenlist.json ]; then
+              echo "Merge successful, updating file"
+              mv merged_tokenlist.json "$FILE"
               git add "$FILE"
-            done
-            
-            # Commit and push the resolved conflicts
-            git -c user.name='GitHub Actions' -c user.email='actions@github.com' \
-              commit -m "Automatically resolve tokenlist.json conflicts with main"
-              
-            # If it's from a fork, we can't push directly
-            if [ "$PR_REPO" != "${{ github.repository }}" ]; then
-              echo "This PR is from a fork. Cannot automatically push changes."
-              echo "The PR author needs to merge the main branch manually."
-              gh pr comment "$PR_NUMBER" --body "I detected conflicts with the main branch but couldn't automatically fix them because this PR is from a fork. Please merge the main branch into your PR branch to resolve conflicts."
             else
-              git push origin "$PR_BRANCH"
-              gh pr comment "$PR_NUMBER" --body "I've automatically resolved conflicts with the main branch by merging all token entries."
+              echo "Failed to merge tokenlist, aborting"
+              git merge --abort
+              exit 1
             fi
-          else
-            # This should not happen since we already checked for conflicts
-            echo "Unexpected: No conflicts detected for PR #$PR_NUMBER when merging"
-            git reset --hard HEAD@{1}  # Undo the merge
-          fi
+          done
+          
+          # Commit the resolved conflicts
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git commit -m "Auto-resolve tokenlist conflicts with main"
+          
+          # Push the changes
+          git push
+
+      - name: Comment on PR
+        if: steps.check-conflicts.outputs.has_conflicts == 'true' && steps.check-conflicts.outputs.has_tokenlist_changes == 'true'
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "I've automatically resolved conflicts between your tokenlist changes and the main branch. The conflicts have been merged by combining both token lists while preserving all unique tokens."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
