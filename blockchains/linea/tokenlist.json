@@ -429,6 +429,12 @@
         "name": "Aryze",
         "symbol": "RYZE",
         "decimals": 18
+      },
+      {
+        "address": "0xB1aFD04774c02AE84692619448B08BA79F19b1ff",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
       }
     ]
   ],
