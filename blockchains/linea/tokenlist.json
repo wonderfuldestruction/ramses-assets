@@ -163,8 +163,8 @@
       {
         "address": "0xEcc68d0451E20292406967Fe7C04280E5238Ac7D",
         "decimals": 18,
-        "name": "Frax Ether",
-        "symbol": "frxETH"
+        "name": "Frax Ether (AXELAR)",
+        "symbol": "axlfrxETH"
       },
       {
         "address": "0x406Cde76a3fD20e48bc1E0F60651e60Ae204B040",
@@ -428,6 +428,12 @@
         "address": "0x34B5c2936DAe6698e54781EDb8B1E69A2C2873F8",
         "name": "Aryze",
         "symbol": "RYZE",
+        "decimals": 18
+      },
+      {
+        "address": "0xB1aFD04774c02AE84692619448B08BA79F19b1ff",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
         "decimals": 18
       }
     ]
