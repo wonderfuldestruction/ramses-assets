@@ -163,8 +163,8 @@
       {
         "address": "0xEcc68d0451E20292406967Fe7C04280E5238Ac7D",
         "decimals": 18,
-        "name": "Frax Ether",
-        "symbol": "frxETH"
+        "name": "Frax Ether (AXELAR)",
+        "symbol": "axlfrxETH"
       },
       {
         "address": "0x406Cde76a3fD20e48bc1E0F60651e60Ae204B040",
