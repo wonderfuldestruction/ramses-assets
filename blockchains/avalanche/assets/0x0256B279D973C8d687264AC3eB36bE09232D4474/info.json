@@ -1,0 +1,5 @@
+{ "name": "MyStandard",
+  "symbol": "MYST",
+  "type": "ERC20",
+  "decimals": 18,
+  "id": "0x0256B279D973C8d687264AC3eB36bE09232D4474" }

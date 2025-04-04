@@ -11,6 +11,12 @@
         "decimals": 18
       },
       {
+        "name": "MyStandard",
+        "address": "0x0256B279D973C8d687264AC3eB36bE09232D4474",
+        "symbol": "MYST",
+        "decimals": 18
+      },
+      {
         "name": "Wrapped Backed Strategy",
         "address": "0x1a4F71B0Ff3C22540887bcf83b50054a213c673d",
         "symbol": "wbMSTR",
@@ -32,6 +38,12 @@
         "name": "Wrapped Backed Coinbase",
         "address": "0xDEc933e2392AD908263e70A386fbF34e703Ffe8F",
         "symbol": "wbCOIN",
+        "decimals": 18
+      },
+      {
+        "name": "GUN",
+        "address": "0x26deBD39D5eD069770406FCa10A0E4f8d2c743eB",
+        "symbol": "GUN",
         "decimals": 18
       },
       {
@@ -778,12 +790,54 @@
         "symbol": "WOOF",
         "decimals": 18
       },
+        "address": "0x22683BbaDD01473969F23709879187705a253763",
+        "name": "Lil Coq",
+        "symbol": "LIL",
+        "decimals": 18
+      },
+      {
+        "address": "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+
+      {
+        "address": "0xf3C8E0E1Ff9824eE7A8cDfcCa51D4962960D290B",
+        "name": "Bellum",
+        "symbol": "BELL",
+        "decimals": 18
+      },
+      {
+        "address": "0x41CBfD7C8709d1E459CE816703a1Fc882DAa77D3",
+        "name": "Loksmith",
+        "symbol": "LOK",
+        "decimals": 18
+      },
+      {
+        "address": "0x9095118A742434d11dF1de4407E33b1B09636eC0",
+        "name": "Bellboy",
+        "symbol": "🔔",
+        "decimals": 18
+      },
+      {
+        "address": "0x05539F021b66Fd01d1FB1ff8E167CdD09bf7c2D0",
+        "name": "BRZ Token",
+        "symbol": "BRZ",
+        "decimals": 18
+      },
+      {
+		    "address" : "0xc970D70234895dD6033f984Fd00909623C666e66",
+		    "name": "Quasi",
+		    "symbol": "QUASI",
+		    "decimals": 18
+	    }
       {
         "address": "0x223a368Ad0E7396165FC629976d77596a51F155C",
         "name": "GURS",
         "symbol": "GURS",
         "decimals": 18
-      }      
+      }   
     ]
   ],
   "version": {

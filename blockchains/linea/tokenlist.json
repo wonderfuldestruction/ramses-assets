@@ -163,8 +163,8 @@
       {
         "address": "0xEcc68d0451E20292406967Fe7C04280E5238Ac7D",
         "decimals": 18,
-        "name": "Frax Ether",
-        "symbol": "frxETH"
+        "name": "Frax Ether (AXELAR)",
+        "symbol": "axlfrxETH"
       },
       {
         "address": "0x406Cde76a3fD20e48bc1E0F60651e60Ae204B040",
@@ -355,6 +355,12 @@
       {
         "address": "0x5860a0bF37133f8461b2DEDe7C80e55D6bfF3721",
         "decimals": 18,
+        "name": "Frax Share (AXELAR)",
+        "symbol": "axlFXS"
+      },
+      {
+        "address": "0x5217Ab28ECE654Aab2C68efedb6A22739df6C3D5",
+        "decimals": 18,
         "name": "Frax Share",
         "symbol": "FXS"
       },
@@ -386,6 +392,48 @@
         "address": "0xe684c87C6Ec06BD002a71ffd0A6638C280e82FBa",
         "name": "THANOS WAS RIGHT",
         "symbol": "TWR",
+        "decimals": 18
+      },
+      {
+        "address": "0xC7346783f5e645aa998B106Ef9E7f499528673D8",
+        "name": "Frax USD",
+        "symbol": "frxUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaD09085191216a94FA1Fd2A790E48e734602a869",
+        "name": "Constellation ETH",
+        "symbol": "xrETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x303c4F39EA359155C698807168e9Dc3aA1dF2b95",
+        "name": "Alchemix",
+        "symbol": "ALCX",
+        "decimals": 18
+      },
+      {
+        "address": "0x303241e2B3b4aeD0bb0F8623e7442368FED8Faf3",
+        "name": "Alchemix ETH",
+        "symbol": "alETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x0E17934B9735D479B2388347fAeF0F4e58b9cc06",
+        "name": "Alchemix USD",
+        "symbol": "alUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x34B5c2936DAe6698e54781EDb8B1E69A2C2873F8",
+        "name": "Aryze",
+        "symbol": "RYZE",
+        "decimals": 18
+      },
+      {
+        "address": "0xB1aFD04774c02AE84692619448B08BA79F19b1ff",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
         "decimals": 18
       }
     ]
