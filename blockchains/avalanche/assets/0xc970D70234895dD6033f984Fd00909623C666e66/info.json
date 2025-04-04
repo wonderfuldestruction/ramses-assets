@@ -1,1 +1,7 @@
-{ "name": "Quasi", "symbol": "QUASI", "type": "ERC20", "decimals": 18, "id": "Checksummed Contract Address" }
+{
+  "name": "Quasi",
+  "symbol": "QUASI",
+  "type": "ERC20",
+  "decimals": 18,
+  "id": "0xc970D70234895dD6033f984Fd00909623C666e66"
+}
