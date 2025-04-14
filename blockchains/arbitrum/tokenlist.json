@@ -831,6 +831,12 @@
         "name": "Eliteness.Network",
         "symbol": "ELITE",
         "decimals": 18
+      },
+      {
+        "address": "0x2e412435928EFE43b156Caa8F4B1068729fEE275",
+        "name": "King Protocol",
+        "symbol": "KING",
+        "decimals": 18
       }
     ]
   ],
