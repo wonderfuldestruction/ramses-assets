@@ -441,6 +441,12 @@
         "name": "Monerium EURe",
         "symbol": "EURe",
         "decimals": 18
+      },
+      {
+        "address": "0x3Bce82cf1A2bc357F956dd494713Fe11DC54780f",
+        "name": "Monerium GBPe",
+        "symbol": "GBPe",
+        "decimals": 18
       }
     ]
   ],
