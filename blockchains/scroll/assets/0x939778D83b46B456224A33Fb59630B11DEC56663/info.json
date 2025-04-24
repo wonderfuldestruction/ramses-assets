@@ -1,0 +1,7 @@
+{
+  "name": "ether.fi USD",
+  "symbol": "eUSD",
+  "type": "ERC20",
+  "decimals": 18,
+  "id": "0x939778D83b46B456224A33Fb59630B11DEC56663"
+}
