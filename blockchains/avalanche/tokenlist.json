@@ -843,6 +843,12 @@
         "name": "Stable Jack",
         "symbol": "JACK",
         "decimals": 18
+      },
+      {
+        "address": "0xACC95Afa65768aa74044E6f6e267AD6417CD3e55",
+        "name": "Boi the Bear",
+        "symbol": "BOI",
+        "decimals": 18
       }
     ]
   ],
