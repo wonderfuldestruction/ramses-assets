@@ -849,6 +849,12 @@
         "name": "Boi the Bear",
         "symbol": "BOI",
         "decimals": 18
+      },
+      {
+        "address": "0x22bc1c924A6174Eb9b2C98035F8D2f20E8Bc4A1E",
+        "name": "supcoin",
+        "symbol": "SUP",
+        "decimals": 18
       }
     ]
   ],
