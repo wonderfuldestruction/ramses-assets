@@ -11,15 +11,15 @@
         "decimals": 18
       },
       {
-        "name": "Wrapped Frax Ether",
+        "name": "Frax Ether",
         "address": "0xFC00000000000000000000000000000000000006",
-        "symbol": "wfrxETH",
+        "symbol": "frxETH",
         "decimals": 18
       },
       {
-        "name": "Frax Share",
+        "name": "Wrapped FRAX",
         "address": "0xFc00000000000000000000000000000000000002",
-        "symbol": "FXS",
+        "symbol": "wFRAX",
         "decimals": 18
       },
       {
@@ -53,9 +53,9 @@
         "decimals": 18
       },
       {
-        "name": "Staked FRAX",
+        "name": "Staked frxUSD",
         "address": "0xfc00000000000000000000000000000000000008",
-        "symbol": "sFRAX",
+        "symbol": "sfrxUSD",
         "decimals": 18
       },
       {
@@ -190,18 +190,6 @@
         "symbol": "frxUSD",
         "decimals": 18
       },
-      {
-        "address": "0xFc00000000000000000000000000000000000002",
-        "name": "Wrapped Frax",
-        "symbol": "wFRAX",
-        "decimals": 18
-      },
-      {
-        "address": "0xFC00000000000000000000000000000000000006",
-        "name": "Frax Ether",
-        "symbol": "frxETH",
-        "decimals": 18
-      }
     ]
   ],
   "version": {
