@@ -189,6 +189,12 @@
         "name": "Frax USD",
         "symbol": "frxUSD",
         "decimals": 18
+      },
+      {
+        "address": "0xFc00000000000000000000000000000000000002",
+        "name": "Wrapped Frax",
+        "symbol": "wFRAX",
+        "decimals": 18
       }
     ]
   ],
