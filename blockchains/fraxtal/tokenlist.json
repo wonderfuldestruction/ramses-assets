@@ -23,12 +23,6 @@
         "decimals": 18
       },
       {
-        "name": "Frax",
-        "address": "0xFc00000000000000000000000000000000000001",
-        "symbol": "FRAX",
-        "decimals": 18
-      },
-      {
         "name": "Axelar Wrapped USDC",
         "address": "0xEB466342C4d449BC9f53A865D5Cb90586f405215",
         "symbol": "axlUSDC",
@@ -190,7 +184,7 @@
         "name": "Renzo Restaked ETH",
         "symbol": "ezETH"
       }
-    ] 
+    ]
   ],
   "version": {
     "major": 1,
