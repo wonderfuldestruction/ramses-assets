@@ -183,6 +183,12 @@
         "decimals": 18,
         "name": "Renzo Restaked ETH",
         "symbol": "ezETH"
+      },
+      {
+        "address": "0xFc00000000000000000000000000000000000001",
+        "name": "Frax USD",
+        "symbol": "frxUSD",
+        "decimals": 18
       }
     ]
   ],
