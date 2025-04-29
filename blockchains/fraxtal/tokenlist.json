@@ -195,6 +195,12 @@
         "name": "Wrapped Frax",
         "symbol": "wFRAX",
         "decimals": 18
+      },
+      {
+        "address": "0xFC00000000000000000000000000000000000006",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
       }
     ]
   ],
