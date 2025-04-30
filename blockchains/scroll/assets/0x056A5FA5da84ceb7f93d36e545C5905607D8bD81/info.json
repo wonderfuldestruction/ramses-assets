@@ -1,0 +1,7 @@
+{
+  "name": "ether.fi governance token",
+  "symbol": "ETHFI",
+  "type": "ERC20",
+  "decimals": 18,
+  "id": "0x056A5FA5da84ceb7f93d36e545C5905607D8bD81"
+}
