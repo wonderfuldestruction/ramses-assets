@@ -147,6 +147,12 @@
         "name": "ether.fi USD",
         "symbol": "eUSD",
         "decimals": 18
+      },
+      {
+        "address": "0x056A5FA5da84ceb7f93d36e545C5905607D8bD81",
+        "name": "ether.fi governance token",
+        "symbol": "ETHFI",
+        "decimals": 18
       }
     ]
   ],
