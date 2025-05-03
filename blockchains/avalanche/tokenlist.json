@@ -855,6 +855,12 @@
         "name": "supcoin",
         "symbol": "SUP",
         "decimals": 18
+      },
+      {
+        "address": "0x1BfA7FD90dE1285deB09a734112AB6bCD935fC6a",
+        "name": "H4SHFund",
+        "symbol": "H4SH",
+        "decimals": 18
       }
     ]
   ],
