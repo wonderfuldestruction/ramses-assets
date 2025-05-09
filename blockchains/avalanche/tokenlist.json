@@ -4,13 +4,13 @@
   "timestamp": "2022-01-27T14:33:26.183301",
   "tokens": [
     [
-	  {
+      {
         "name": "PLYR",
         "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
         "symbol": "PLYR",
         "decimals": 18
       },
-	  {
+      {
         "name": "GAMR",
         "address": "0xEcB70d85aA4dAc4102688c313588710A3f143529",
         "symbol": "GAMR",
