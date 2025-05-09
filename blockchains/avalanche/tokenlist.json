@@ -845,6 +845,12 @@
         "decimals": 18
       },
       {
+        "address": "0x34a528Da3b2EA5c6Ad1796Eba756445D1299a577",
+        "name": "Integrity DAO",
+        "symbol": "ID",
+        "decimals": 18
+      },
+      {
         "address": "0xACC95Afa65768aa74044E6f6e267AD6417CD3e55",
         "name": "Boi the Bear",
         "symbol": "BOI",
