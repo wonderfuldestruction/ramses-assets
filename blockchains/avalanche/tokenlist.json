@@ -5,6 +5,18 @@
   "tokens": [
     [
       {
+        "name": "PLYR",
+        "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
+        "symbol": "PLYR",
+        "decimals": 18
+      },
+      {
+        "name": "GAMR",
+        "address": "0xEcB70d85aA4dAc4102688c313588710A3f143529",
+        "symbol": "GAMR",
+        "decimals": 18
+      },
+      {
         "name": "Backed CSPX S&P 500",
         "address": "0x1e2C4fb7eDE391d116E6B41cD0608260e8801D59",
         "symbol": "bCSPX",
