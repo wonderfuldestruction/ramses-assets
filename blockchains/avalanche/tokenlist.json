@@ -851,6 +851,12 @@
         "decimals": 18
       },
       {
+        "address": "0x8Ac8F09bb8410b45E2D0D30e6aCeB0d128671a90",
+        "name": "LONZO",
+        "symbol": "LONZO",
+        "decimals": 18
+      },
+      {
         "address": "0xACC95Afa65768aa74044E6f6e267AD6417CD3e55",
         "name": "Boi the Bear",
         "symbol": "BOI",
