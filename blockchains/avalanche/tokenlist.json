@@ -897,6 +897,12 @@
         "name": "H4SHFund",
         "symbol": "H4SH",
         "decimals": 18
+      },
+      {
+        "address": "0xC423EA985D96FD5cBE69F52Bb624e267866072cD",
+        "name": "Rest in Piss",
+        "symbol": "RIP",
+        "decimals": 18
       }
     ]
   ],
