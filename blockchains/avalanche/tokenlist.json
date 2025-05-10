@@ -909,6 +909,12 @@
         "name": "Eat The Banana ",
         "symbol": "BNANA",
         "decimals": 18
+      },
+      {
+        "address": "0x4Bf8cf8e8A20d965D585097256Ecf2BE98a5fbd8",
+        "name": "BENIS",
+        "symbol": "BENIS",
+        "decimals": 18
       }
     ]
   ],
