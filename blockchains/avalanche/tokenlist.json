@@ -903,6 +903,12 @@
         "name": "Rest in Piss",
         "symbol": "RIP",
         "decimals": 18
+      },
+      {
+        "address": "0x386905718368aDeD7e544a40cA2Bd60cEb4D28B0",
+        "name": "Eat The Banana ",
+        "symbol": "BNANA",
+        "decimals": 18
       }
     ]
   ],
