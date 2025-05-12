@@ -915,6 +915,12 @@
         "name": "BENIS",
         "symbol": "BENIS",
         "decimals": 18
+      },
+      {
+        "address": "0x21e32d59B1F9574674006A4101150A004D93c24f",
+        "name": "Laifu",
+        "symbol": "LAIFU",
+        "decimals": 18
       }
     ]
   ],
