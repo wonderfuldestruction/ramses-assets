@@ -837,6 +837,12 @@
         "name": "King Protocol",
         "symbol": "KING",
         "decimals": 18
+      },
+      {
+        "address": "0x3212dc0F8c834e4DE893532d27CC9B6001684DB0",
+        "name": "Pear",
+        "symbol": "PEAR",
+        "decimals": 18
       }
     ]
   ],
