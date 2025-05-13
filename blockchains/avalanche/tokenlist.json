@@ -851,6 +851,18 @@
         "decimals": 18
       },
       {
+        "address": "0x386905718368aded7e544a40ca2bd60ceb4d28b0",
+        "name": "EAT THE BANANA",
+        "symbol": "BNANA",
+        "decimals": 18
+      },
+      {
+        "address": "0x58F075fFCE3b299ff81966a24063b357455a7dDf",
+        "name": "DRAMA",
+        "symbol": "DRAMA",
+        "decimals": 18
+      },
+      {
         "address": "0x223a368Ad0E7396165FC629976d77596a51F155C",
         "name": "GURS",
         "symbol": "GURS",
@@ -869,6 +881,12 @@
         "decimals": 18
       },
       {
+        "address": "0x8Ac8F09bb8410b45E2D0D30e6aCeB0d128671a90",
+        "name": "LONZO",
+        "symbol": "LONZO",
+        "decimals": 18
+      },
+      {
         "address": "0xACC95Afa65768aa74044E6f6e267AD6417CD3e55",
         "name": "Boi the Bear",
         "symbol": "BOI",
@@ -884,6 +902,30 @@
         "address": "0x1BfA7FD90dE1285deB09a734112AB6bCD935fC6a",
         "name": "H4SHFund",
         "symbol": "H4SH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC423EA985D96FD5cBE69F52Bb624e267866072cD",
+        "name": "Rest in Piss",
+        "symbol": "RIP",
+        "decimals": 18
+      },
+      {
+        "address": "0x386905718368aDeD7e544a40cA2Bd60cEb4D28B0",
+        "name": "Eat The Banana ",
+        "symbol": "BNANA",
+        "decimals": 18
+      },
+      {
+        "address": "0x4Bf8cf8e8A20d965D585097256Ecf2BE98a5fbd8",
+        "name": "BENIS",
+        "symbol": "BENIS",
+        "decimals": 18
+      },
+      {
+        "address": "0x21e32d59B1F9574674006A4101150A004D93c24f",
+        "name": "Laifu",
+        "symbol": "LAIFU",
         "decimals": 18
       }
     ]
