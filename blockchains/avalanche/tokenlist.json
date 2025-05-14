@@ -839,6 +839,12 @@
         "decimals": 18
       },
       {
+        "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
+        "name": "UTY",
+        "symbol": "UTY",
+        "decimals": 18
+      },
+      {
         "address": "0x05539F021b66Fd01d1FB1ff8E167CdD09bf7c2D0",
         "name": "BRZ Token",
         "symbol": "BRZ",
