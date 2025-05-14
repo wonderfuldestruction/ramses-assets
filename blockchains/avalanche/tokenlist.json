@@ -845,6 +845,12 @@
         "decimals": 18
       },
       {
+        "address": "0xe03a08BD497a0F1dAed8F81D835C09242Bb82BCa",
+        "name": "Staked abcPHAR",
+        "symbol": "sabcPHAR",
+        "decimals": 18
+      },
+      {
         "address": "0xc970D70234895dD6033f984Fd00909623C666e66",
         "name": "Quasi",
         "symbol": "QUASI",
