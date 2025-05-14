@@ -851,6 +851,12 @@
         "decimals": 18
       },
       {
+        "address": "0xC55Fa890fd62c25c85D46f57aC972f3F30839E2F",
+        "name": "CRIME",
+        "symbol": "CRIME",
+        "decimals": 18
+      },
+      {
         "address": "0x58F075fFCE3b299ff81966a24063b357455a7dDf",
         "name": "DRAMA",
         "symbol": "DRAMA",
