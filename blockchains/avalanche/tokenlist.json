@@ -839,6 +839,12 @@
         "decimals": 18
       },
       {
+        "address": "0x5E0E90E268BC247Cc850c789A0DB0d5c7621fb59",
+        "name": "MapleStory Universe: NEXPACE",
+        "symbol": "NXPC",
+        "decimals": 18
+      },
+      {
         "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
         "name": "UTY",
         "symbol": "UTY",
