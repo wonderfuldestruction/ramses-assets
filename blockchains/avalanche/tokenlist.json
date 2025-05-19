@@ -5,6 +5,12 @@
   "tokens": [
     [
       {
+        "name": "ZooKeeper",
+        "address": "0x1B88D7aD51626044Ec62eF9803EA264DA4442F32",
+        "symbol": "ZOO",
+        "decimals": 18
+      },
+      {
         "name": "PLYR",
         "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
         "symbol": "PLYR",
@@ -833,9 +839,27 @@
         "decimals": 18
       },
       {
+        "address": "0x5E0E90E268BC247Cc850c789A0DB0d5c7621fb59",
+        "name": "MapleStory Universe: NEXPACE",
+        "symbol": "NXPC",
+        "decimals": 18
+      },
+      {
+        "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
+        "name": "UTY",
+        "symbol": "UTY",
+        "decimals": 18
+      },
+      {
         "address": "0x05539F021b66Fd01d1FB1ff8E167CdD09bf7c2D0",
         "name": "BRZ Token",
         "symbol": "BRZ",
+        "decimals": 18
+      },
+      {
+        "address": "0xe03a08BD497a0F1dAed8F81D835C09242Bb82BCa",
+        "name": "Staked abcPHAR",
+        "symbol": "sabcPHAR",
         "decimals": 18
       },
       {
@@ -848,6 +872,12 @@
         "address": "0x386905718368aded7e544a40ca2bd60ceb4d28b0",
         "name": "EAT THE BANANA",
         "symbol": "BNANA",
+        "decimals": 18
+      },
+      {
+        "address": "0xC55Fa890fd62c25c85D46f57aC972f3F30839E2F",
+        "name": "CRIME",
+        "symbol": "CRIME",
         "decimals": 18
       },
       {
@@ -917,9 +947,17 @@
         "decimals": 18
       },
       {
+
         "address": "0xAc1FDBC389254cce45e8493348eEAcC66F852609",
         "name": "Wyoming",
         "symbol": "WY",
+        "decimals": 18
+      },
+      {
+
+        "address": "0x21e32d59B1F9574674006A4101150A004D93c24f",
+        "name": "Laifu",
+        "symbol": "LAIFU",
         "decimals": 18
       }
     ]
