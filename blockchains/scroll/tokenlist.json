@@ -153,6 +153,12 @@
         "name": "ether.fi governance token",
         "symbol": "ETHFI",
         "decimals": 18
+      },
+      {
+        "address": "0xdb9E8F82D6d45fFf803161F2a5f75543972B229a",
+        "name": "Quill USD Stablecoin",
+        "symbol": "USDQ",
+        "decimals": 18
       }
     ]
   ],
