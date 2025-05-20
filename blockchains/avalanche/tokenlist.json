@@ -947,14 +947,12 @@
         "decimals": 18
       },
       {
-
         "address": "0xAc1FDBC389254cce45e8493348eEAcC66F852609",
         "name": "Wyoming",
         "symbol": "WY",
         "decimals": 18
       },
       {
-
         "address": "0x21e32d59B1F9574674006A4101150A004D93c24f",
         "name": "Laifu",
         "symbol": "LAIFU",
@@ -964,6 +962,12 @@
         "address": "0x8d7d37b2198469CabeEA47dd1902ec3659cA4Ea1",
         "name": "Nobs saved Avax",
         "symbol": "NOBS",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F2B1D59b13999a8581d8eF382D00b733C2c70fB",
+        "name": "JORBO AI",
+        "symbol": "JORBO",
         "decimals": 18
       }
     ]
