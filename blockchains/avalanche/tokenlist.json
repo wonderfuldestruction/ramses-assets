@@ -975,6 +975,12 @@
         "name": "Mu Coin",
         "symbol": "MU",
         "decimals": 18
+      },
+      {
+        "address": "0x0a9a9e0a695f52502cddf7a59c880f4bdf2f0548",
+        "name": "Boiler Room",
+        "symbol": "BOIL",
+        "decimals": 18
       }
     ]
   ],
