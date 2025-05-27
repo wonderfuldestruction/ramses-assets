@@ -845,6 +845,12 @@
         "decimals": 18
       },
       {
+        "address": "0x8cF71B4f445A47f234A0Dc61034708A4087bead0",
+        "name": "Emini Spaghettini",
+        "symbol": "EMINI",
+        "decimals": 18
+      },
+      {
         "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
         "name": "UTY",
         "symbol": "UTY",
