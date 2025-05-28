@@ -857,6 +857,12 @@
         "decimals": 18
       },
       {
+        "address": "0xb7eF323B0aD752D008B4236EF822148FAFc0775d",
+        "name": "Sidelined",
+        "symbol": "COPE",
+        "decimals": 18
+      },
+      {
         "address": "0x05539F021b66Fd01d1FB1ff8E167CdD09bf7c2D0",
         "name": "BRZ Token",
         "symbol": "BRZ",
