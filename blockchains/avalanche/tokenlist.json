@@ -987,6 +987,12 @@
         "name": "Boiler Room",
         "symbol": "BOIL",
         "decimals": 18
+      },
+      {
+        "address": "0xA18205Cf67a28630AA0De95DDD62AFd65CF3c4fA",
+        "name": "xART",
+        "symbol": "xART",
+        "decimals": 18
       }
     ]
   ],
