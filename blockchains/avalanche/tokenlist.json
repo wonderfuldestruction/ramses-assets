@@ -845,9 +845,27 @@
         "decimals": 18
       },
       {
+        "address": "0x8cF71B4f445A47f234A0Dc61034708A4087bead0",
+        "name": "Emini Spaghettini",
+        "symbol": "EMINI",
+        "decimals": 18
+      },
+      {
+        "address": "0xfd2c2A98009d0cBed715882036e43d26C4289053",
+        "name": "avBTC",
+        "symbol": "avBTC",
+        "decimals": 18
+      },
+      {
         "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
         "name": "UTY",
         "symbol": "UTY",
+        "decimals": 18
+      },
+      {
+        "address": "0xb7eF323B0aD752D008B4236EF822148FAFc0775d",
+        "name": "Sidelined",
+        "symbol": "COPE",
         "decimals": 18
       },
       {
@@ -968,6 +986,30 @@
         "address": "0x7F2B1D59b13999a8581d8eF382D00b733C2c70fB",
         "name": "JORBO AI",
         "symbol": "JORBO",
+        "decimals": 18
+      },
+      {
+        "address": "0xD036414fa2BCBb802691491E323BFf1348C5F4Ba",
+        "name": "Mu Coin",
+        "symbol": "MU",
+        "decimals": 18
+      },
+      {
+        "address": "0x0a9a9e0a695f52502cddf7a59c880f4bdf2f0548",
+        "name": "Boiler Room",
+        "symbol": "BOIL",
+        "decimals": 18
+      },
+      {
+        "address": "0xA18205Cf67a28630AA0De95DDD62AFd65CF3c4fA",
+        "name": "xART",
+        "symbol": "xART",
+        "decimals": 18
+      },
+      {
+        "address": "0x8877f4605dDFBC05Cf37685De74E9f6232080a09",
+        "name": "Vanya Lasagna",
+        "symbol": "VANYA",
         "decimals": 18
       },
       {
