@@ -1011,6 +1011,12 @@
         "name": "Vanya Lasagna",
         "symbol": "VANYA",
         "decimals": 18
+      },
+      {
+        "address": "0x51724f564e25e628af6dfed33bccf49d94705ba0",
+        "name": "The Book of Arena",
+        "symbol": "BOA",
+        "decimals": 18
       }
     ]
   ],
