@@ -1005,6 +1005,12 @@
         "name": "xART",
         "symbol": "xART",
         "decimals": 18
+      },
+      {
+        "address": "0x8877f4605dDFBC05Cf37685De74E9f6232080a09",
+        "name": "Vanya Lasagna",
+        "symbol": "VANYA",
+        "decimals": 18
       }
     ]
   ],
