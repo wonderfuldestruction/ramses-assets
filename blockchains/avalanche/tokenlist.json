@@ -851,6 +851,12 @@
         "decimals": 18
       },
       {
+        "address": "0xfd2c2A98009d0cBed715882036e43d26C4289053",
+        "name": "avBTC",
+        "symbol": "avBTC",
+        "decimals": 18
+      },
+      {
         "address": "0xDBc5192A6B6FfEe7451301bb4ec312f844F02B4A",
         "name": "UTY",
         "symbol": "UTY",
