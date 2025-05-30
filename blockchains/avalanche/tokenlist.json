@@ -854,7 +854,7 @@
         "address": "0x90842eb834cFD2A1DB0b1512B254a18E4D396215",
         "name": "Good Bridging",
         "symbol": "GB",
-        "decimals": 18
+        "decimals": 9
       },
       {
         "address": "0xfd2c2A98009d0cBed715882036e43d26C4289053",
