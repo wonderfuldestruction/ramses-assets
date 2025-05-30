@@ -851,6 +851,12 @@
         "decimals": 18
       },
       {
+        "address": "0x51724f564E25e628AF6dfeD33BccF49d94705ba0",
+        "name": "TheBookOfArena",
+        "symbol": "BOA",
+        "decimals": 18
+      },
+      {
         "address": "0x90842eb834cFD2A1DB0b1512B254a18E4D396215",
         "name": "Good Bridging",
         "symbol": "GB",
