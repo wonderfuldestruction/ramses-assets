@@ -857,6 +857,12 @@
         "decimals": 18
       },
       {
+        "address": "0xEFA670F00447b13d92b639E06829079ED16498ab",
+        "name": "The Mooch",
+        "symbol": "MOOCH",
+        "decimals": 18
+      },
+      {
         "address": "0x90842eb834cFD2A1DB0b1512B254a18E4D396215",
         "name": "Good Bridging",
         "symbol": "GB",
