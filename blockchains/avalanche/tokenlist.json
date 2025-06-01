@@ -1035,6 +1035,12 @@
         "name": "The Book of Arena",
         "symbol": "BOA",
         "decimals": 18
+      },
+      {
+        "address": "0x39e58C9B8A539E007B4457A5Dd1107b1434d278B",
+        "name": "Baby JubJub",
+        "symbol": "BJUB",
+        "decimals": 18
       }
     ]
   ],
