@@ -1035,6 +1035,12 @@
         "name": "The Book of Arena",
         "symbol": "BOA",
         "decimals": 18
+      },
+      {
+        "address": "0xc2Bd50f5Dcf6b7A154d6694c4176Bed06E40b7b3",
+        "name": "HIRO",
+        "symbol": "HR",
+        "decimals": 18
       }
     ]
   ],
