@@ -1037,6 +1037,12 @@
         "decimals": 18
       },
       {
+        "address": "0xc2Bd50f5Dcf6b7A154d6694c4176Bed06E40b7b3",
+        "name": "HIRO",
+        "symbol": "HR",
+        "decimals": 18
+      },
+      {
         "address": "0x39e58C9B8A539E007B4457A5Dd1107b1434d278B",
         "name": "Baby JubJub",
         "symbol": "BJUB",
