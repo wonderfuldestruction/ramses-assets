@@ -587,6 +587,12 @@
         "symbol": "MAJIN"
       },
       {
+        "address": "0x7a6382e1d2EA134251c1d5BFA3D2b3374368cfF8",
+        "decimals": 18,
+        "name": "SIMP",
+        "symbol": "SIMP"
+      },
+      {
         "address": "0x5c5e384Bd4e36724B2562cCAA582aFd125277C9B",
         "decimals": 18,
         "name": "Arrow Token",
