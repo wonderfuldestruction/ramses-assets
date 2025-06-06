@@ -189,6 +189,12 @@
         "name": "Frax USD",
         "symbol": "frxUSD",
         "decimals": 18
+      },
+      {
+        "address": "0x788D96f655735f52c676A133f4dFC53cEC614d4A",
+        "name": "dTRINITY USD",
+        "symbol": "dUSD",
+        "decimals": 6
       }
     ]
   ],
