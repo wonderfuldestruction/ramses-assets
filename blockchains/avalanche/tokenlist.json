@@ -1053,6 +1053,12 @@
         "name": "Baby JubJub",
         "symbol": "BJUB",
         "decimals": 18
+      },
+      {
+        "address": "0x8D8B084269f4b2Ad111b60793e9f3577A7795605",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
       }
     ]
   ],
