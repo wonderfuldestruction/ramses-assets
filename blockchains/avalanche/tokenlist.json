@@ -593,6 +593,12 @@
         "symbol": "SIMP"
       },
       {
+        "address": "0x91a1C5a6001e6Aa628f49094658C65A19794D7f6",
+        "decimals": 18,
+        "name": "PHARM",
+        "symbol": "PHARM"
+      },
+      {
         "address": "0x5c5e384Bd4e36724B2562cCAA582aFd125277C9B",
         "decimals": 18,
         "name": "Arrow Token",
