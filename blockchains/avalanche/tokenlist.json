@@ -1065,6 +1065,54 @@
         "name": "Magic Internet Money",
         "symbol": "MIM",
         "decimals": 18
+      },
+      {
+        "address": "0xCaC4904E1DB1589Aa17A2Ec742F5a6bCF4c4D037",
+        "name": "Erol Musk",
+        "symbol": "EROL",
+        "decimals": 18
+      },
+      {
+        "address": "0xF7ed17f0Fb2B7C9D3DDBc9F0679b2e1098993e81",
+        "name": "Mu Gold",
+        "symbol": "MUG",
+        "decimals": 18
+      },
+      {
+        "address": "0xf7f05192AFe4675cd48483df613569E6E5Fe8B75",
+        "name": "Capital Rotation",
+        "symbol": "ROTI",
+        "decimals": 18
+      },
+      {
+        "address": "0xE3f3EF63f193f001D72bb623cA6eCe3E71451D3f",
+        "name": "Cast3",
+        "symbol": "CAST",
+        "decimals": 18
+      },
+      {
+        "address": "0x09d156F209E0C54D0365D6BB05f8a048649f2542",
+        "name": "AIVAX",
+        "symbol": "AIVAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xd548e5220c3cad07a6BeCc32351643e3DEC472DB",
+        "name": "Baldy Baldy",
+        "symbol": "BALDY",
+        "decimals": 18
+      },
+      {
+        "address": "0xDab256B0D47F92C8356478f67cFC9121eDa89e2A",
+        "name": "BERTINI E ERNINI",
+        "symbol": "BERTI",
+        "decimals": 18
+      },
+      {
+        "address": "0x56F019a9f6F03c43F4bD77857993D3e11fD5d420",
+        "name": "Comfy Kroox",
+        "symbol": "COMFY",
+        "decimals": 18
       }
     ]
   ],
