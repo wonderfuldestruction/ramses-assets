@@ -1113,6 +1113,12 @@
         "name": "Comfy Kroox",
         "symbol": "COMFY",
         "decimals": 18
+      },
+      {
+        "address": "0xaf57eD478325c32f3Ec8290540B15b812ec70905",
+        "name": "red triangle",
+        "symbol": "TRIANGLE",
+        "decimals": 18
       }
     ]
   ],
