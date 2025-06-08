@@ -11,6 +11,12 @@
         "decimals": 18
       },
       {
+        "name": "LAMBO",
+        "address": "0x6F43fF77A9C0Cf552b5b653268fBFe26A052429b",
+        "symbol": "LAMBO",
+        "decimals": 18
+      },
+      {
         "name": "PLYR",
         "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
         "symbol": "PLYR",
