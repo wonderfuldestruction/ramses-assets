@@ -35,6 +35,12 @@
         "decimals": 18
       },
       {
+        "name": "FrogNation",
+        "address": "0xec273F211e7f0165421BDf72F5B55995B9a91665",
+        "symbol": "FRNA",
+        "decimals": 18
+      },
+      {
         "name": "Backed CSPX S&P 500",
         "address": "0x1e2C4fb7eDE391d116E6B41cD0608260e8801D59",
         "symbol": "bCSPX",
