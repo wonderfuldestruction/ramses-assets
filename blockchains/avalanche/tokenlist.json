@@ -17,6 +17,12 @@
         "decimals": 18
       },
       {
+        "name": "UST",
+        "address": "0x472F1bd4F431cEAE95c7f3382f715C0B1961ab8c",
+        "symbol": "UST",
+        "decimals": 18
+      },
+      {
         "name": "PLYR",
         "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
         "symbol": "PLYR",
