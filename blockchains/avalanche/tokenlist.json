@@ -1143,6 +1143,24 @@
         "name": "SEEDS",
         "symbol": "SEEDS",
         "decimals": 18
+      },
+      {
+        "address": "0x5DDc8d968a94cf95CfeB7379F8372d858B9C797d",
+        "name": "WOLFI",
+        "symbol": "WOLFI",
+        "decimals": 18
+      },
+      {
+        "address": "0x4355fc5118fd657072c079975b7c7133f3dbce25",
+        "name": "AURAFART",
+        "symbol": "AFART",
+        "decimals": 18
+      },
+      {
+        "address": "0xE2e38eEb9699f64afe77fc4E092c5C8B5D671D2f",
+        "name": "Snowmon",
+        "symbol": "SNOW",
+        "decimals": 18
       }
     ]
   ],
