@@ -1167,6 +1167,12 @@
         "name": "Snowmon",
         "symbol": "SNOW",
         "decimals": 18
+      },
+      {
+        "address": "0xe088d859D8BcE513b76Dc11C05D559254e28A336",
+        "name": "Wife Changing Money",
+        "symbol": "WIFE",
+        "decimals": 18
       }
     ]
   ],
