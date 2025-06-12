@@ -1173,6 +1173,12 @@
         "name": "Wife Changing Money",
         "symbol": "WIFE",
         "decimals": 18
+      },
+      {
+        "address": "0xF6D99cB2c99cb1e21113d894294a79d1E574F4f5",
+        "name": "Jasen Desimun",
+        "symbol": "JDMN",
+        "decimals": 18
       }
     ]
   ],
