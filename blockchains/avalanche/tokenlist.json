@@ -23,6 +23,12 @@
         "decimals": 18
       },
       {
+        "name": "Yel Finance",
+        "address": "0x949185D3BE66775Ea648F4a306740EA9eFF9C567",
+        "symbol": "YEL",
+        "decimals": 18
+      },
+      {
         "name": "PLYR",
         "address": "0xC09a033927f9fD558C92CF7AeAbE34B71ce4B31E",
         "symbol": "PLYR",
