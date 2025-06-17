@@ -29,6 +29,12 @@
         "decimals": 18
       },
       {
+        "name": "HLP0",
+        "address": "0x3D75F2BB8aBcDBd1e27443cB5CBCE8A668046C81",
+        "symbol": "HLP0",
+        "decimals": 18
+      },
+      {
         "name": "Yel Finance",
         "address": "0x949185D3BE66775Ea648F4a306740EA9eFF9C567",
         "symbol": "YEL",
