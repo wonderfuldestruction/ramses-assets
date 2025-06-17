@@ -17,6 +17,12 @@
         "decimals": 18
       },
       {
+        "name": "Staked UTY",
+        "address": "0x580d5E1399157FD0d58218b7A514b60974F2AB01",
+        "symbol": "yUTY",
+        "decimals": 18
+      },
+      {
         "name": "UST",
         "address": "0x472F1bd4F431cEAE95c7f3382f715C0B1961ab8c",
         "symbol": "UST",
